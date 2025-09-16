@@ -1,0 +1,17 @@
+{
+  "name": "RTU Go Starter",
+  "image": "mcr.microsoft.com/devcontainers/go:1",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["golang.Go"],
+      "settings": {
+        "go.toolsManagement.autoUpdate": true,
+        "go.useLanguageServer": true
+      }
+    }
+  },
+  "postCreateCommand": "go version && go env GOPATH && mkdir -p bin"
+}
