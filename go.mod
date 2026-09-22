@@ -1,3 +1,3 @@
-module example.com/rtu-go-starter
+module github.com/ValRCS/RTU_GO_STARTER
 
-go 1.22
+go 1.27

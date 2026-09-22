@@ -6,12 +6,12 @@ bin/
 *.so
 *.dylib
 
-# Go build cache
+# Go build/test output
 *.test
 *.out
+coverage.out
 
 # IDE / editor
-.vscode/
 .idea/
 *.code-workspace
 

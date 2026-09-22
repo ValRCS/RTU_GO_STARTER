@@ -1,72 +1,130 @@
 # RTU Go Programming Starter
 
-Ready-to-fork starter repository for **Riga Technical University** students.
-Works out of the box in **GitHub Codespaces** and locally.
+Ready-to-fork starter repository for Riga Technical University students. It provides a consistent Go 1.27 development environment in GitHub Codespaces and can also be used locally.
 
-## What’s inside
-- Two runnable Go programs:
-  - `hello.go` — prints **Hello RTU students!**
-  - `arguments.go` — prints all command-line arguments or **no arguments entered**
-- Go modules (`go.mod`)
-- Dev container for Codespaces (`.devcontainer/`)
-- VS Code settings (`.vscode/`)
-- Makefile convenience targets
-- MIT License
+This repository is intentionally generic. The lab folders contain only small compile-ready placeholders; course-specific assignment requirements should be provided separately.
 
-## Quick start (teacher)
-1. Create an empty GitHub repo.
-2. Download the ZIP from your ChatGPT message and extract its contents.
-3. Commit & push everything to your new repo.
-4. (Optional) Update the module path in `go.mod` to match your repo URL.
+## Quick start with GitHub Codespaces
 
-## Quick start (students — Codespaces)
-1. **Fork** the teacher’s repository.
-2. Click **Code ➜ Codespaces ➜ Create codespace on main**.
-3. In the Codespace terminal, try:
+1. Fork this repository to your own GitHub account.
+2. Open your fork.
+3. Select **Code -> Codespaces -> Create codespace on main**.
+4. When the terminal opens, verify the Go installation:
+
    ```bash
-   go run hello.go
-   go run arguments.go one two three
-   ```
-   or use the Makefile:
-   ```bash
-   make run-hello
-   make run-args ARGS="one two three"
+   go version
    ```
 
-## Quick start (local)
-- Requires Go 1.21+ (1.22+ recommended).
-```bash
-# Run directly
-go run hello.go
-go run arguments.go a b c
+5. Run one of the starter assignments:
 
-# Or build binaries
-go build -o bin/hello hello.go
-go build -o bin/arguments arguments.go
-./bin/hello
-./bin/arguments a b c
+   ```bash
+   go run ./lab1/assignment1
+   go run ./lab1/assignment2
+   go run ./lab2/assignment1
+   go run ./lab2/assignment2
+   ```
+
+For example:
+
+```text
+This is for lab1 - assignment1
 ```
 
-## Files
+Each starter program contains a `// TODO` marker showing where assignment work can begin.
+
+## Repository structure
+
 ```text
 .
-├─ .devcontainer/
-│  └─ devcontainer.json
-├─ .vscode/
-│  ├─ extensions.json
-│  └─ settings.json
-├─ .gitignore
-├─ .editorconfig
-├─ LICENSE
-├─ Makefile
-├─ go.mod
-├─ hello.go
-└─ arguments.go
+├── .devcontainer/
+│   └── devcontainer.json
+├── .github/
+│   └── workflows/
+│       └── go.yml
+├── .vscode/
+│   └── extensions.json
+├── lab1/
+│   ├── assignment1/
+│   │   └── main.go
+│   └── assignment2/
+│       └── main.go
+├── lab2/
+│   ├── assignment1/
+│   │   └── main.go
+│   └── assignment2/
+│       └── main.go
+├── .editorconfig
+├── .gitignore
+├── LICENSE
+├── Makefile
+├── README.md
+└── go.mod
 ```
 
-## Notes
-- The `module` path in `go.mod` is a placeholder (`example.com/rtu-go-starter`). You may change it to your repo URL (e.g., `github.com/ValRCS/rtu-go-starter`). If you only use standard library imports, the placeholder will not affect local runs.
-- Feel free to add more examples (packages under `cmd/` are a nice pattern for multiple binaries).
+Each assignment directory is an independent `package main`, so it can be compiled or run separately while the whole repository remains a valid Go module.
+
+## Useful Go commands
+
+Format all Go source files:
+
+```bash
+go fmt ./...
+```
+
+Check for suspicious constructs:
+
+```bash
+go vet ./...
+```
+
+Run all tests:
+
+```bash
+go test ./...
+```
+
+Build every package:
+
+```bash
+go build ./...
+```
+
+Run all basic checks:
+
+```bash
+make check
+```
+
+The Makefile is only a convenience. The underlying `go` commands work directly and are the commands students should understand.
+
+## Local development
+
+If you do not use Codespaces, install Go 1.27 or newer and the official Go extension for Visual Studio Code.
+
+Then clone your fork and run, for example:
+
+```bash
+go run ./lab1/assignment1
+```
+
+## Go module path
+
+The starter module is:
+
+```text
+github.com/ValRCS/RTU_GO_STARTER
+```
+
+A fork can use this module path while working on the course assignments. If the repository later becomes an independent Go project and should use its own import path, change it with:
+
+```bash
+go mod edit -module github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY
+```
+
+## Automated checks
+
+GitHub Actions runs formatting, `go vet`, `go test`, and `go build` checks after pushes and pull requests. This provides a simple indication that the repository still compiles cleanly.
 
 ---
-_Prepared for RTU CS students — happy Go coding!_
+
+Prepared as a reusable Go starter for Riga Technical University courses.

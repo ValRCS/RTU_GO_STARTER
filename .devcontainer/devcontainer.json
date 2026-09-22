@@ -1,17 +1,20 @@
 {
   "name": "RTU Go Starter",
-  "image": "mcr.microsoft.com/devcontainers/go:1",
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {}
-  },
+  "image": "mcr.microsoft.com/devcontainers/go:2-1.27",
   "customizations": {
     "vscode": {
-      "extensions": ["golang.Go"],
+      "extensions": [
+        "golang.Go"
+      ],
       "settings": {
-        "go.toolsManagement.autoUpdate": true,
+        "[go]": {
+          "editor.defaultFormatter": "golang.go",
+          "editor.formatOnSave": true
+        },
+        "go.toolsManagement.checkForUpdates": "local",
         "go.useLanguageServer": true
       }
     }
   },
-  "postCreateCommand": "go version && go env GOPATH && mkdir -p bin"
+  "postCreateCommand": "go version && go env GOMOD GOPATH && go mod download"
 }

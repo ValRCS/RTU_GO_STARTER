@@ -1,18 +1,29 @@
-    SHELL := /bin/bash
+SHELL := /bin/bash
 
-    .PHONY: run-hello run-args build clean
+.PHONY: run-lab1-assignment1 run-lab1-assignment2 run-lab2-assignment1 run-lab2-assignment2 fmt vet test build check
 
-    run-hello:
-	go run hello.go
+run-lab1-assignment1:
+	go run ./lab1/assignment1
 
-    # Use: make run-args ARGS="one two three"
-    run-args:
-	go run arguments.go $(ARGS)
+run-lab1-assignment2:
+	go run ./lab1/assignment2
 
-    build:
-	mkdir -p bin
-	go build -o bin/hello hello.go
-	go build -o bin/arguments arguments.go
+run-lab2-assignment1:
+	go run ./lab2/assignment1
 
-    clean:
-	rm -rf bin
+run-lab2-assignment2:
+	go run ./lab2/assignment2
+
+fmt:
+	go fmt ./...
+
+vet:
+	go vet ./...
+
+test:
+	go test ./...
+
+build:
+	go build ./...
+
+check: vet test build
